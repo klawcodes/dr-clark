@@ -33,7 +33,7 @@ style="width:600px">
 4. Move the script to a directory included in your PATH (e.g., ~/.local/bin):
 
     ```bash
-    mv drclark ~/.local/bin
+    cp drclark ~/.local/bin
     ```
 
 5. Run the script with your desired cryptocurrency symbol (e.g., BTC or ETH):
@@ -91,7 +91,7 @@ You can also use third-party terminal emulators like Git Bash or ConEmu, which p
 	drclark show-favorite
 - Remove favorite cryptocurrency:
   ```bash
-  ddrclark --remove-favorite BTC
+  drclark --remove-favorite BTC
 - Show the list of favorite cryptocurrencies:
 	```bash
 	drclark favorite-list
