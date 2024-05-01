@@ -1,7 +1,10 @@
 
 # Dr. Clark
-[Dr. Clark](https://i.ibb.co/6bnfRB4/2024-05-01-15-58.png)
+
+<img src="https://i.ibb.co/6bnfRB4/2024-05-01-15-58.png" style="width:600px">
+<p align="center">
 🚀 Fetch and display cryptocurrency prices right from your terminal!
+<p/>
 
 ## Usage
 
