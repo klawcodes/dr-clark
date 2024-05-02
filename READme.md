@@ -1,5 +1,3 @@
-
-# Dr. Clark
 <p align="center">
 <img src="https://i.ibb.co/6bnfRB4/2024-05-01-15-58.png" 
 style="width:600px">
@@ -42,47 +40,15 @@ style="width:600px">
     drclark BTC
     ```
 
-### Windows
-
-#### Using Batch File
-
-1. Clone the repository to your local machine or download the script file (`drclark`).
-
-2. Create a batch file (e.g., `crypto_prices.bat`) with the following content:
-
-    ```batch
-    @echo off
-    bash /path/to/your/script %*
-    ```
-
-    Replace `/path/to/your/script` with the path to your `drclark` file.
-
-3. Save the batch file and move it to a directory included in your PATH.
-
-4. Run the batch file from the Command Prompt with your desired cryptocurrency symbol:
-
-    ```batch
-    drclark BTC
-    ```
-
-#### Using Cygwin
-
-1. Install Cygwin by downloading and running the installer from the [Cygwin website](https://www.cygwin.com/).
-
-2. Open the Cygwin terminal and navigate to the directory containing the script.
-
-3. Run the script with your desired cryptocurrency symbol:
-
-    ```bash
-    bash drclark BTC
-    ```
-
 #### Using Third-Party Terminal Emulator
 
 You can also use third-party terminal emulators like Git Bash or ConEmu, which provide a Unix-like environment on Windows.
 
 ## Additional Features
 
+- Display help message:
+  ```bash
+  drclark -h
 - Add a favorite cryptocurrency symbol:
   ```bash
   drclark --add-favorite BTC

@@ -50,6 +50,17 @@ show_list() {
     fi
 }
 
+# Function to display usage information
+display_usage() {
+    echo "Usage: $0 [options] [symbol]"
+    echo "Options:"
+    echo "  --add-favorite SYMBOL   Add the specified coin symbol to favorites."
+    echo "  --remove-favorite SYMBOL Remove the specified coin symbol from favorites."
+    echo "  --show-favorite          Show the list of favorite coins."
+    echo "  --favorite-list          Show the list of favorite coins without fetching data."
+    echo "  -h, --help               Display this help message."
+}
+
 # Function to fetch cryptocurrency prices
 fetch_prices() {
     # Check if any symbol is provided as an argument
@@ -57,20 +68,6 @@ fetch_prices() {
         echo -e "${RED}Error: No coin symbol provided.${RESET}"
         exit 1
     fi
-
-echo -e "
-\e[38;2;249;99;94m\e[97m      :::::::::  :::::::::               ::::::::  :::            :::     :::::::::  :::    ::: \e[0m
-\e[38;2;249;99;94m\e[97m     :+:    :+: :+:    :+:             :+:    :+: :+:          :+: :+:   :+:    :+: :+:   :+:   \e[0m
-\e[38;2;249;99;94m\e[97m    +:+    +:+ +:+    +:+             +:+        +:+         +:+   +:+  +:+    +:+ +:+  +:+    \e[0m
-\e[38;2;249;99;94m\e[97m   +#+    +:+ +#++:++#:              +#+        +#+        +#++:++#++: +#+ +:+ +#+ +#+ +#+     \e[0m
-\e[38;2;249;99;94m\e[97m  +#+    +#+ +#+    +#+             +#+        +#+        +#+     +#+ +#+  +#+#+# +#+  +#+    \e[0m
-\e[38;2;249;99;94m\e[97m #+#    #+# #+#    #+# #+#         #+#    #+# #+#        #+#     #+# #+#   #+#+# #+#   #+#   \e[0m
-\e[38;2;249;99;94m\e[97m#########  ###    ### ###          ########  ########## ###     ### ###    ### ###    ### \e[0m
-
-\e[38;2;249;99;94m\e[97m                   SEE THE FUTURE FROM YOUR TERMINAL! - by klaw                                 \e[0m
-"
-
-
 
     # Fetch data from the API
     data=$(curl -s "https://api.coinlore.net/api/tickers/")
@@ -80,6 +77,18 @@ echo -e "
         echo -e "${RED}Error fetching data from the API.${RESET}"
         exit 1
     fi
+
+    echo -e "
+\e[38;2;249;99;94m\e[97m      :::::::::  :::::::::               ::::::::  :::            :::     :::::::::  :::    ::: \e[0m
+\e[38;2;249;99;94m\e[97m     :+:    :+: :+:    :+:             :+:    :+: :+:          :+: :+:   :+:    :+: :+:   :+:   \e[0m
+\e[38;2;249;99;94m\e[97m    +:+    +:+ +:+    +:+             +:+        +:+         +:+   +:+  +:+    +:+ +:+  +:+    \e[0m
+\e[38;2;249;99;94m\e[97m   +#+    +:+ +#++:++#:              +#+        +#+        +#++:++#++: +#+ +:+ +#+ +#+ +#+     \e[0m
+\e[38;2;249;99;94m\e[97m  +#+    +#+ +#+    +#+             +#+        +#+        +#+     +#+ +#+  +#+#+# +#+  +#+    \e[0m
+\e[38;2;249;99;94m\e[97m #+#    #+# #+#    #+# #+#         #+#    #+# #+#        #+#     #+# #+#   #+#+# #+#   #+#   \e[0m
+\e[38;2;249;99;94m\e[97m#########  ###    ### ###          ########  ########## ###     ### ###    ### ###    ### \e[0m
+
+\e[38;2;249;99;94m\e[97m                       SEE THE FUTURE FROM YOUR TERMINAL! - by klaw                                 \e[0m
+"
 
     # Loop through provided symbols
     for symbol in "$@"; do
@@ -182,10 +191,12 @@ main() {
     elif [ "$1" == "--remove-favorite" ]; then
         shift
         remove_favorite "$@"
-    elif [ "$1" == "show-favorite" ]; then
+    elif [ "$1" == "--show-favorite" ]; then
         show_favorite
-    elif [ "$1" == "favorite-list" ]; then
+    elif [ "$1" == "--favorite-list" ]; then
         show_list
+    elif [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+        display_usage
     else
         fetch_prices "$@"
     fi
